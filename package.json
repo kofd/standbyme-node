@@ -1,0 +1,14 @@
+{
+  "name": "standbyme-node",
+  "version": "0.0.0",
+  "description": "A node wrapper around select functions in guidolib",
+  "main": "index.js",
+  "repository": "",
+  "author": "Alex Londeree <alex.londeree@gmail.com>",
+  "dependencies": {
+    "nan": "~0.4.4"
+  },
+  "scripts": {
+    "install": "node bin/build.js"
+  }
+}
