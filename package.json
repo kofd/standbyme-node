@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "description": "A node wrapper around select functions in guidolib",
   "main": "index.js",
-  "repository": "",
+  "repository": "https://github.com/kofd/standbyme-node.git",
   "author": "Alex Londeree <alex.londeree@gmail.com>",
   "dependencies": {
-    "nan": "~0.4.4"
+    "nan": "~0.4.4",
+    "node-gyp": "~0.13.0"
   },
   "scripts": {
     "install": "node bin/build.js"

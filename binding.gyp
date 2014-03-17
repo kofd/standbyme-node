@@ -44,7 +44,10 @@
               '../<(guidolib_out)/src/devices/SVGDevice.cpp.o',
               '../<(guidolib_out)/src/devices/SVGSystem.cpp.o',
               '../<(guidolib_out)/src/lib/GUIDOEngine.cpp.o',
-            ]
+            ],
+            'cflags': [
+              '-std=c++0x',
+            ],
           }],
         ],
         'libraries': [

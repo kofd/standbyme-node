@@ -61,8 +61,10 @@ function guido_build(callback)
   process.stdout.write('.');
 
   process.chdir(LIB_GUIDO_DIR + "/cmake");
+  console.log(LIB_GUIDO_DIR + "/cmake");
 
-  var args = ["-G","\"Unix Makefiles\""];
+  var args = ["-G",'"Unix Makefiles"'];
+  console.log(args);
 
   var child = spawn("cmake", args);
   child.stdout.on('readable', read_stream.bind(undefined, child.stdout));
@@ -71,12 +73,14 @@ function guido_build(callback)
     process.stdout.write('\n');
     if(0 === code && !signal)
     {
+      var args = [];
       var child = spawn("make", args);
       child.stdout.on('readable', read_stream.bind(undefined, child.stdout));
       child.on('exit', function(code, signal) {
         process.stdout.write('\n');
         if(0 === code && !signal)
         {
+          var args = [];
           var child = spawn("sudo make install", args);
           child.stdout.on('readable', read_stream.bind(undefined, child.stdout));
           child.on('exit', function(code, signal) {
@@ -128,3 +132,7 @@ function nodegyp_build(callback)
     }
   });
 }
+
+nodegyp_build(function(){
+  console.log('standbyme-node build complete.');
+});

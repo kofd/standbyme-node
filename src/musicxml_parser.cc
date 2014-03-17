@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <memory>
 
 #include "musicxml_parser.h"
 #include "SVGDevice.h"
@@ -20,13 +21,12 @@ MusicXMLParser::MusicXMLParser()
     
 }
 
-MediaStream::~MediaStream()
+MusicXMLParser::~MusicXMLParser()
 {
     
 }
 
 NAN_METHOD(MusicXMLParser::New) {
-  TRACE_CALL;
   NanScope();
 
   if(!args.IsConstructCall()) {
@@ -35,16 +35,14 @@ NAN_METHOD(MusicXMLParser::New) {
 
   // todo: construct the parser
 
-  TRACE_END;
   NanReturnValue( args.This() );
 }
 
 NAN_METHOD(MusicXMLParser::parse) {
-  TRACE_CALL;
   NanScope();
   
-  v8::String::Utf8Value param1(args[0]->ToString());
-  v8::String::Utf8Value param2(args[1]->ToString());
+  String::Utf8Value param1(args[0]->ToString());
+  String::Utf8Value param2(args[1]->ToString());
   
   ARHandler arh;
   SVGSystem svgsys;
@@ -61,7 +59,7 @@ NAN_METHOD(MusicXMLParser::parse) {
   // and parse the GMN file to get a GGR handle directly stored in the drawing struct
   GuidoParseFile (*param1, &arh);
   GuidoAR2GR (arh, 0, &desc.handle);
-  desc.hdc = &dev;                    // we'll draw on the postscript device
+  desc.hdc = dev.get();               // we'll draw on the postscript device
   desc.page = 1;                      // draw the first page only
   desc.updateRegion.erase = true;     // and draw everything
   desc.scrollx = desc.scrolly = 0;    // from the upper left page corner
@@ -71,28 +69,22 @@ NAN_METHOD(MusicXMLParser::parse) {
   
   outfile.close();
   
-  TRACE_END;
-  NanReturnValue(array);
+  NanReturnValue(Undefined());
 }
 
 /*NAN_GETTER(MusicXMLParser::get_name) {
-  TRACE_CALL;
   NanScope();
 
-  TRACE_END;
   NanReturnValue(Undefined());
 }*/
 
 /*NAN_SETTER(MusicXMLParser::set_name) {
-  TRACE_CALL;
   NanScope();
 
-  TRACE_END;
   NanReturnValue(Undefined());
 }*/
 
 NAN_SETTER(MusicXMLParser::ReadOnly) {
-  INFO("MusicXMLParser::ReadOnly");
 }
 
 
