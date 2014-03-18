@@ -9,3 +9,5 @@ void init(Handle<Object> exports) {
   // Module::Init(exports);
   MusicXMLParser::Init(exports);
 }
+
+NODE_MODULE(standbyme, init)

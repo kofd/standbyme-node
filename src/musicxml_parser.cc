@@ -32,6 +32,9 @@ NAN_METHOD(MusicXMLParser::New) {
   if(!args.IsConstructCall()) {
     return NanThrowTypeError("Use the new operator to construct the MusicXMLParser.");
   }
+  
+  MusicXMLParser* obj = new MusicXMLParser();
+  obj->Wrap(args.This());
 
   // todo: construct the parser
 

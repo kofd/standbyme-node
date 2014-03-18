@@ -5,7 +5,7 @@
   'conditions': [
     ['OS=="linux"', {
       'variables': {
-        'guidolib_out%': '<(guidolib)/cmake/CMakeFiles/GUIDOEngine.dir/home/ubuntu/guido-engine',
+        'guidolib_out%': '<(guidolib)/cmake',
       }
     }],
   ],
@@ -41,9 +41,8 @@
         'conditions': [
           ['OS=="linux"', {
             'libraries': [
-              '../<(guidolib_out)/src/devices/SVGDevice.cpp.o',
-              '../<(guidolib_out)/src/devices/SVGSystem.cpp.o',
-              '../<(guidolib_out)/src/lib/GUIDOEngine.cpp.o',
+              '../<(guidolib_out)/libGUIDOEngine.so.1',
+              '../<(guidolib_out)/libGUIDOEngine.so.1.50',
             ],
             'cflags': [
               '-std=c++0x',

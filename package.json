@@ -6,8 +6,9 @@
   "repository": "https://github.com/kofd/standbyme-node.git",
   "author": "Alex Londeree <alex.londeree@gmail.com>",
   "dependencies": {
-    "nan": "~0.4.4",
-    "node-gyp": "~0.13.0"
+    "bindings": "~1.1.1",
+    "node-gyp": "~0.10.10",
+    "nan": "~0.4.4"
   },
   "scripts": {
     "install": "node bin/build.js"
